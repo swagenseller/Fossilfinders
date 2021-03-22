@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import "../css/board.css";
 
 const cart = [
-	["Corn", "Potato", "Radish"],
-	["Tomato", "Graphes", "Mango"],
+	[
+		{ visible: false, fossil: true },
+		{ visible: false, fossil: false },
+		{ visible: false, fossil: false },
+	],
+	[
+		{ visible: false, fossil: false },
+		{ visible: false, fossil: true },
+		{ visible: false, fossil: false },
+	],
 ];
 
 export default function Board(props) {
@@ -24,7 +32,10 @@ export default function Board(props) {
 			return (
 				<tr>
 					{items.map((subItems, sIndex) => {
-						return <td> {subItems} </td>;
+						if (subItems.fossil == true) {
+							return <td className="found"> </td>;
+						}
+						return <td> </td>;
 					})}
 				</tr>
 			);
