@@ -14,6 +14,19 @@ const cart = [
 	],
 ];
 
+const enemy = [
+	[
+		{ visible: false, fossil: true },
+		{ visible: false, fossil: false },
+		{ visible: false, fossil: false },
+	],
+	[
+		{ visible: false, fossil: false },
+		{ visible: false, fossil: true },
+		{ visible: false, fossil: false },
+	],
+];
+
 export default function Board(props) {
 	const [turn, setTurn] = useState(props.turn);
 
@@ -21,18 +34,20 @@ export default function Board(props) {
 		setTurn(props.turn);
 	}, [props.turn]); */
 
-	const [topGrid, setTopGrid] = useState();
-	const [bottomGrid, setBottomGrid] = useState();
+	const [topGrid, setTopGrid] = useState(props.board);
+	const [bottomGrid, setBottomGrid] = useState(props.board);
 	/*useEffect(() => {
 		setBoard(props.board);
 	}, [props.board]); */
 
-	const displayGrid = (grid) => {
+	const displayGrid = (grid, enemy) => {
 		return grid.map((items, index) => {
 			return (
 				<tr>
 					{items.map((subItems, sIndex) => {
-						if (subItems.fossil == true) {
+						if (enemy) {
+							return <td className="enemyTile"> </td>;
+						} else if (subItems.fossil == true) {
 							return <td className="found"> </td>;
 						}
 						return <td> </td>;
@@ -45,7 +60,8 @@ export default function Board(props) {
 	return (
 		<div>
 			<h1>Turn: {turn}</h1>
-			<table>{displayGrid(cart)}</table>
+			<table>{displayGrid(topGrid, true)}</table>
+			<table>{displayGrid(bottomGrid)}</table>
 		</div>
 	);
 }
