@@ -1,4 +1,5 @@
 import Board from "./Board";
+import "../css/app.css";
 
 const testBoard = [];
 for (let i = 0; i < 8; i++) {
@@ -14,7 +15,10 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<Board turn="red" board={testBoard} />
+				<div className="game-con">
+					<Board turn="red" board={testBoard} />
+				</div>
+
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
 				</p>
