@@ -5,7 +5,7 @@ const testBoard = [];
 for (let i = 0; i < 8; i++) {
 	testBoard.push([]);
 	for (let j = 0; j < 8; j++) {
-		testBoard[i].push({ visible: false, fossil: false });
+		testBoard[i].push({ id: "" + i + j, visible: false, fossil: false });
 	}
 }
 
