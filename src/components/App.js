@@ -1,13 +1,17 @@
 import Board from "./Board";
+import setFossil from "./randBoard";
 import "../css/app.css";
 
 const testBoard = [];
 for (let i = 0; i < 8; i++) {
 	testBoard.push([]);
 	for (let j = 0; j < 8; j++) {
-		testBoard[i].push({ id: "" + i + j, visible: false, fossil: false });
+		testBoard[i].push({ id: "" + i + j, visible: true, fossil: false });
 	}
 }
+// board[y][x]
+setFossil(testBoard, false, 1, 3, 4);
+console.log(testBoard);
 
 //console.log(testBoard);
 
