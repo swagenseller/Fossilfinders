@@ -4,20 +4,21 @@ function get_random(Min, Max) {
 }
 //checks whether we can place a valid
 //fossil given a starting x and y position
-function isvalid(board, x, y, horizontal, fossil_size, board_size) {
+function isvalid(board, horizontal, x, y, fossil_size, board_size) {
 	if (horizontal) {
 		if (x + fossil_size >= board_size) return false;
 		for (var i = x; i < x + fossil_size; i++) {
 			if (
-				board[y][i] != "*" ||
-				(y - 1 >= 0 && board[y - 1][i] != "*") || // to ensure that ships do not "touch each other"
-				(y + 1 < board_size && board[y + 1][i] != "*")
+				board[y][i].fossil === true ||
+				(y - 1 >= 0 && board[y - 1][i].fossil === true) || // to ensure that fossils do not "touch each other"
+				(y + 1 < board_size && board[y + 1][i].fossil === true)
 			)
 				return false;
 		}
 		if (
-			(x - 1 >= 0 && board[y][x - 1] != "*") ||
-			(x + fossil_size < board_size && board[y][x + fossil_size] != "*")
+			(x - 1 >= 0 && board[y][x - 1].fossil === true) ||
+			(x + fossil_size < board_size &&
+				board[y][x + fossil_size].fossil === true)
 		)
 			return false;
 	} else {
@@ -25,15 +26,16 @@ function isvalid(board, x, y, horizontal, fossil_size, board_size) {
 		if (y + fossil_size >= board_size) return false;
 		for (var i = y; i < y + fossil_size; i++) {
 			if (
-				board[i][x] != "*" ||
-				(x - 1 >= 0 && board[i][x - 1] != "*") || // to ensure that ships do not "touch each other"
-				(x + 1 < board_size && board[i][x + 1] != "*")
+				board[i][x].fossil === true ||
+				(x - 1 >= 0 && board[i][x - 1].fossil === true) || // to ensure that fossils do not "touch each other"
+				(x + 1 < board_size && board[i][x + 1].fossil === true)
 			)
 				return false;
 		}
 		if (
-			(y - 1 >= 0 && board[y - 1][x] != "*") ||
-			(y + fossil_size < board_size && board[y + fossil_size][x] != "*")
+			(y - 1 >= 0 && board[y - 1][x].fossil === true) ||
+			(y + fossil_size < board_size &&
+				board[y + fossil_size][x].fossil === true)
 		)
 			return false;
 	}
@@ -54,4 +56,4 @@ const setFossil = (board, horizontal, x, y, fossilSize) => {
 	}
 };
 
-export default setFossil;
+export { setFossil, isvalid };
