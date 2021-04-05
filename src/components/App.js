@@ -1,5 +1,5 @@
 import Board from "./Board";
-import setFossil from "./randBoard";
+import { setFossil, isvalid } from "./randBoard";
 import "../css/app.css";
 
 const testBoard = [];
@@ -10,8 +10,10 @@ for (let i = 0; i < 8; i++) {
 	}
 }
 // board[y][x]
-setFossil(testBoard, false, 1, 3, 4);
-console.log(testBoard);
+//setFossil(testBoard, false, 1, 3, 4);
+//console.log(testBoard);
+console.log(isvalid(testBoard, false, 1, 3, 4, 8));
+console.log(isvalid(testBoard, true, 2, 4, 3, 8));
 
 //console.log(testBoard);
 
