@@ -56,4 +56,24 @@ const setFossil = (board, horizontal, x, y, fossilSize) => {
 	}
 };
 
-export { setFossil, isvalid };
+function createFossil(board, board_size, fossil_size) {
+	var counter = 0;
+	while (counter < 200) {
+		counter++;
+		var horizontal = Math.random() < 0.5; //random true or false
+		var x = 0;
+		var y = 0;
+		if (horizontal) {
+			x = get_random(0, board_size - fossil_size - 1);
+			y = get_random(0, board_size - 1);
+		} else {
+			x = get_random(0, board_size - 1);
+			y = get_random(0, board_size - fossil_size - 1);
+		}
+		if (!isvalid(board, horizontal, x, y, fossil_size, board_size)) continue; //check if it conflicts
+		setFossil(board, horizontal, x, y, fossil_size);
+		break;
+	}
+}
+
+export { setFossil, isvalid, createFossil };
