@@ -90,4 +90,4 @@ function createFossils(board, board_size) {
 	}
 }
 
-export { setFossil, isvalid, createFossil, createFossils };
+export default createFossils;
