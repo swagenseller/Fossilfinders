@@ -1,55 +1,12 @@
 import { useEffect, useState } from "react";
 import "../css/board.css";
 
-const cart = [
-	[
-		{ visible: false, fossil: true },
-		{ visible: false, fossil: false },
-		{ visible: false, fossil: false },
-	],
-	[
-		{ visible: false, fossil: false },
-		{ visible: false, fossil: true },
-		{ visible: false, fossil: false },
-	],
-];
-
-const enemy = [
-	[
-		{ visible: false, fossil: true },
-		{ visible: false, fossil: false },
-		{ visible: false, fossil: false },
-	],
-	[
-		{ visible: false, fossil: false },
-		{ visible: false, fossil: true },
-		{ visible: false, fossil: false },
-	],
-];
-
 export default function Board(props) {
 	const [turn, setTurn] = useState(props.turn);
 
-	/*useEffect(() => {
-		setTurn(props.turn);
-	}, [props.turn]); */
-
 	const [topGrid, setTopGrid] = useState(props.board);
 	const [bottomGrid, setBottomGrid] = useState(props.board);
-	/*useEffect(() => {
-		setBoard(props.board);
-	}, [props.board]); */
 
-	/*function handleClick(item) {
-		let newItem = {
-			...item,
-			visible: true,
-		};
-		// call hook
-		grid[row][col] = newItem;
-	} */
-	//console.log(topGrid);
-	// copies 2d arrays
 	const deepCopy = (arr) => {
 		let copy = [];
 		arr.forEach((elem) => {
@@ -90,10 +47,8 @@ export default function Board(props) {
 		const newArr = deepCopy(topGrid);
 		newArr[item.row][item.col] = newItem;
 		setTopGrid(newArr);
-		//console.log(topGrid);
 	};
-	console.log("board");
-	//console.log(topGrid[2][2]);
+
 	const displayGrid = (grid, enemy) => {
 		return grid.map((items, index) => {
 			return (
