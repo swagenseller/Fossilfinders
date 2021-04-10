@@ -40,17 +40,78 @@ export default function Board(props) {
 		setBoard(props.board);
 	}, [props.board]); */
 
+	/*function handleClick(item) {
+		let newItem = {
+			...item,
+			visible: true,
+		};
+		// call hook
+		grid[row][col] = newItem;
+	} */
+	console.log(topGrid);
+	const deepCopy = (arr) => {
+		let copy = [];
+		arr.forEach((elem) => {
+			if (Array.isArray(elem)) {
+				copy.push(deepCopy(elem));
+			} else {
+				if (typeof elem === "object") {
+					copy.push(deepCopyObject(elem));
+				} else {
+					copy.push(elem);
+				}
+			}
+		});
+		return copy;
+	};
+	// Helper function to deal with Objects
+	const deepCopyObject = (obj) => {
+		let tempObj = {};
+		for (let [key, value] of Object.entries(obj)) {
+			if (Array.isArray(value)) {
+				tempObj[key] = deepCopy(value);
+			} else {
+				if (typeof value === "object") {
+					tempObj[key] = deepCopyObject(value);
+				} else {
+					tempObj[key] = value;
+				}
+			}
+		}
+		return tempObj;
+	};
+
+	const handleClick = (item, row, col) => {
+		let newItem = {
+			...item,
+			visible: true,
+		};
+		const newArr = deepCopy(topGrid);
+		newArr[row][col] = newItem;
+		setTopGrid(newArr);
+		console.log(topGrid);
+	};
+	console.log("board");
+	//console.log(topGrid[2][2]);
 	const displayGrid = (grid, enemy) => {
 		return grid.map((items, index) => {
 			return (
 				<tr>
 					{items.map((subItems, sIndex) => {
 						if (enemy) {
-							return <td className="enemyTile"> </td>;
+							return (
+								<td
+									key={subItems.id}
+									className={
+										subItems.visible && subItems.fossil ? "found" : "enemyTile"
+									}
+									onClick={() => handleClick(subItems, 2, 2)}
+								></td>
+							);
 						} else if (subItems.fossil == true) {
-							return <td className="found"> </td>;
+							return <td key={subItems.id} className="found"></td>;
 						}
-						return <td> </td>;
+						return <td /*onClick={() => test(grid[index][sIndex])}*/> </td>;
 					})}
 				</tr>
 			);
