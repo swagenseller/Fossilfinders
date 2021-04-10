@@ -48,7 +48,8 @@ export default function Board(props) {
 		// call hook
 		grid[row][col] = newItem;
 	} */
-	console.log(topGrid);
+	//console.log(topGrid);
+	// copies 2d arrays
 	const deepCopy = (arr) => {
 		let copy = [];
 		arr.forEach((elem) => {
@@ -81,15 +82,15 @@ export default function Board(props) {
 		return tempObj;
 	};
 
-	const handleClick = (item, row, col) => {
+	const handleClick = (item) => {
 		let newItem = {
 			...item,
 			visible: true,
 		};
 		const newArr = deepCopy(topGrid);
-		newArr[row][col] = newItem;
+		newArr[item.row][item.col] = newItem;
 		setTopGrid(newArr);
-		console.log(topGrid);
+		//console.log(topGrid);
 	};
 	console.log("board");
 	//console.log(topGrid[2][2]);
@@ -105,7 +106,7 @@ export default function Board(props) {
 									className={
 										subItems.visible && subItems.fossil ? "found" : "enemyTile"
 									}
-									onClick={() => handleClick(subItems, 2, 2)}
+									onClick={() => handleClick(subItems)}
 								></td>
 							);
 						} else if (subItems.fossil == true) {
