@@ -13,6 +13,9 @@ td {
 .found {
 	background-color: red;
 }
+.miss {
+	background-color: #8c6b07;
+}
 .enemyTile {
 	background-color: #bf9821;
 }

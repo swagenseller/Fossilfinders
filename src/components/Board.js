@@ -7,6 +7,13 @@ export default function Board(props) {
 	const [topGrid, setTopGrid] = useState(props.board);
 	const [bottomGrid, setBottomGrid] = useState(props.board);
 
+	const styleTile = (item) => {
+		if (item.visible) {
+			return item.fossil ? "found" : "miss";
+		}
+		return "enemyTile";
+	};
+
 	const deepCopy = (arr) => {
 		let copy = [];
 		arr.forEach((elem) => {
@@ -58,9 +65,7 @@ export default function Board(props) {
 							return (
 								<td
 									key={subItems.id}
-									className={
-										subItems.visible && subItems.fossil ? "found" : "enemyTile"
-									}
+									className={styleTile(subItems)}
 									onClick={() => handleClick(subItems)}
 								></td>
 							);
