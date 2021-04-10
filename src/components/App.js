@@ -6,13 +6,17 @@ const testBoard = [];
 for (let i = 0; i < 8; i++) {
 	testBoard.push([]);
 	for (let j = 0; j < 8; j++) {
-		testBoard[i].push({ id: "" + i + j, visible: true, fossil: false });
+		testBoard[i].push({
+			id: "" + i + j,
+			visible: false,
+			fossil: false,
+			row: i,
+			col: j,
+		});
 	}
 }
 // board[y][x]
-
 createFossils(testBoard, 8);
-
 //console.log(testBoard);
 
 function App() {
