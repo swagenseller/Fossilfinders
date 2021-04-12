@@ -1,12 +1,6 @@
-import { useEffect, useState } from "react";
 import "../css/board.css";
 
 export default function Board(props) {
-	//const [turn, setTurn] = useState(props.turn);
-
-	//const [topGrid, setTopGrid] = useState(props.enemy);
-	//const [bottomGrid, setBottomGrid] = useState(props.player);
-
 	const styleTile = (item) => {
 		if (item.visible) {
 			return item.fossil ? "found" : "miss";
@@ -15,7 +9,7 @@ export default function Board(props) {
 	};
 	/*
 	arr : 2d array 
-	returns a copy a 2d array
+	returns a copy of a 2d array
 	*/
 	const deepCopy = (arr) => {
 		let copy = [];
