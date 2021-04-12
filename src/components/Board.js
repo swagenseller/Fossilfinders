@@ -96,8 +96,12 @@ export default function Board(props) {
 	return (
 		<div>
 			<h1>Turn: {props.turn}</h1>
-			<table>{displayGrid(props.enemy, true)}</table>
-			<table>{displayGrid(props.player)}</table>
+			<table>
+				<tbody>{displayGrid(props.enemy, true)}</tbody>
+			</table>
+			<table>
+				<tbody>{displayGrid(props.player)}</tbody>
+			</table>
 		</div>
 	);
 }
