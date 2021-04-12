@@ -4,10 +4,12 @@ function get_random(Min, Max) {
 }
 //checks whether we can place a valid
 //fossil given a starting x and y position
+// horizontal determines whether a fossil is placed horizontally or vertically
 function isvalid(board, horizontal, x, y, fossil_size, board_size) {
+	let i;
 	if (horizontal) {
 		if (x + fossil_size >= board_size) return false;
-		for (var i = x; i < x + fossil_size; i++) {
+		for (i = x; i < x + fossil_size; i++) {
 			if (
 				board[y][i].fossil === true ||
 				(y - 1 >= 0 && board[y - 1][i].fossil === true) || // to ensure that fossils do not "touch each other"
@@ -22,9 +24,8 @@ function isvalid(board, horizontal, x, y, fossil_size, board_size) {
 		)
 			return false;
 	} else {
-		//////////////////////////////
 		if (y + fossil_size >= board_size) return false;
-		for (var i = y; i < y + fossil_size; i++) {
+		for (i = y; i < y + fossil_size; i++) {
 			if (
 				board[i][x].fossil === true ||
 				(x - 1 >= 0 && board[i][x - 1].fossil === true) || // to ensure that fossils do not "touch each other"
@@ -43,14 +44,15 @@ function isvalid(board, horizontal, x, y, fossil_size, board_size) {
 }
 
 //creates a fossil on the board
-//coords for the board[y][x]
+//coordinates are ordered y, x (board[y][x])
 const setFossil = (board, horizontal, x, y, fossilSize) => {
+	let i;
 	if (horizontal) {
-		for (var i = x; i < x + fossilSize; i++) {
+		for (i = x; i < x + fossilSize; i++) {
 			board[y][i].fossil = true;
 		}
 	} else {
-		for (var i = y; i < y + fossilSize; i++) {
+		for (i = y; i < y + fossilSize; i++) {
 			board[i][x].fossil = true;
 		}
 	}
