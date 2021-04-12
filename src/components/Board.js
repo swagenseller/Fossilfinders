@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import "../css/board.css";
 
 export default function Board(props) {
-	const [turn, setTurn] = useState(props.turn);
+	//const [turn, setTurn] = useState(props.turn);
 
-	const [topGrid, setTopGrid] = useState(props.board);
-	const [bottomGrid, setBottomGrid] = useState(props.board);
+	//const [topGrid, setTopGrid] = useState(props.enemy);
+	//const [bottomGrid, setBottomGrid] = useState(props.player);
 
 	const styleTile = (item) => {
 		if (item.visible) {
@@ -13,7 +13,10 @@ export default function Board(props) {
 		}
 		return "enemyTile";
 	};
-
+	/*
+	arr : 2d array 
+	returns a copy a 2d array
+	*/
 	const deepCopy = (arr) => {
 		let copy = [];
 		arr.forEach((elem) => {
@@ -29,7 +32,7 @@ export default function Board(props) {
 		});
 		return copy;
 	};
-	// Helper function to deal with Objects
+	// Helper function for deepCopy to deal with Objects
 	const deepCopyObject = (obj) => {
 		let tempObj = {};
 		for (let [key, value] of Object.entries(obj)) {
@@ -51,9 +54,12 @@ export default function Board(props) {
 			...item,
 			visible: true,
 		};
-		const newArr = deepCopy(topGrid);
+		const newArr = deepCopy(props.enemy);
 		newArr[item.row][item.col] = newItem;
-		setTopGrid(newArr);
+		//const newPlayer = deepCopy(props.player);
+		props.setOneGrid(props.player);
+		props.setTwoGrid(newArr);
+		props.setTurn(props.turn === "red" ? "blue" : "red");
 	};
 
 	const displayGrid = (grid, enemy) => {
@@ -69,8 +75,16 @@ export default function Board(props) {
 									onClick={() => handleClick(subItems)}
 								></td>
 							);
-						} else if (subItems.fossil == true) {
-							return <td key={subItems.id} className="found"></td>;
+						} else {
+							if (subItems.visible) {
+								if (subItems.fossil) {
+									return <td key={subItems.id} className="found"></td>;
+								}
+								return <td key={subItems.id} className="miss-player"></td>;
+							}
+							if (subItems.fossil) {
+								return <td key={subItems.id} className="fossil"></td>;
+							}
 						}
 						return <td /*onClick={() => test(grid[index][sIndex])}*/> </td>;
 					})}
@@ -81,9 +95,9 @@ export default function Board(props) {
 
 	return (
 		<div>
-			<h1>Turn: {turn}</h1>
-			<table>{displayGrid(topGrid, true)}</table>
-			<table>{displayGrid(bottomGrid)}</table>
+			<h1>Turn: {props.turn}</h1>
+			<table>{displayGrid(props.enemy, true)}</table>
+			<table>{displayGrid(props.player)}</table>
 		</div>
 	);
 }
