@@ -1,3 +1,13 @@
+/*
+the winning score is 17 assumming 
+the fossils array in creatFossils is:
+[
+	[1, 4],   1 * 4 = 4
+	[3, 3],	  3 * 3 = 9
+	[2, 2],	  2 * 2 = 4
+	          4 + 9 + 4 = 17
+]
+*/
 export default function ScoreBoard(props) {
 	return (
 		<div>
