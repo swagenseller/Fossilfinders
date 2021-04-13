@@ -54,6 +54,7 @@ export default function Board(props) {
 		props.setOneGrid(props.player);
 		props.setTwoGrid(newArr);
 		props.setTurn(props.turn === "red" ? "blue" : "red");
+		props.setPlaying(false);
 	};
 
 	const displayGrid = (grid, enemy) => {
