@@ -82,8 +82,8 @@ function createFossil(board, board_size, fossil_size) {
 function createFossils(board, board_size) {
 	var fossils = [
 		[1, 4],
-		[2, 3],
-		[3, 2],
+		[3, 3],
+		[2, 2],
 	]; // first element of every pair is number of fossils, second element is length of the fossil
 	for (var i = 0; i < fossils.length; i++) {
 		for (var count = 0; count < fossils[i][0]; count++) {
