@@ -1,4 +1,5 @@
 import Board from "./Board";
+import PlayBtn from "./PlayBtn";
 import createFossils from "./randBoard";
 import "../css/app.css";
 import { useEffect, useState } from "react";
@@ -39,6 +40,7 @@ function App() {
 	const [twoGrid, setTwoGrid] = useState(p2Board);
 	const [oneGrid, setOneGrid] = useState(p1Board);
 	const [turn, setTurn] = useState("red");
+	const [playing, setPlaying] = useState(false);
 	useEffect(() => {
 		console.log("the state of turn has changed");
 	}, [turn]);
@@ -47,14 +49,18 @@ function App() {
 		<div className="App">
 			<div className="game-con">
 				<h1>Turn: {turn}</h1>
-				<Board
-					turn={turn}
-					setTurn={setTurn}
-					enemy={oneGrid}
-					player={twoGrid}
-					setTwoGrid={setTwoGrid}
-					setOneGrid={setOneGrid}
-				/>
+				{!playing && <PlayBtn setPlaying={setPlaying} />}
+				{playing && (
+					<Board
+						turn={turn}
+						setTurn={setTurn}
+						enemy={oneGrid}
+						player={twoGrid}
+						setTwoGrid={setTwoGrid}
+						setOneGrid={setOneGrid}
+						setPlaying={setPlaying}
+					/>
+				)}
 			</div>
 		</div>
 	);
