@@ -46,6 +46,7 @@ function App() {
 	return (
 		<div className="App">
 			<div className="game-con">
+				<h1>Turn: {turn}</h1>
 				<Board
 					turn={turn}
 					setTurn={setTurn}

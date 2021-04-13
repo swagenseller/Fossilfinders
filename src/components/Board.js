@@ -89,7 +89,6 @@ export default function Board(props) {
 
 	return (
 		<div>
-			<h1>Turn: {props.turn}</h1>
 			<table>
 				<tbody>{displayGrid(props.enemy, true)}</tbody>
 			</table>
