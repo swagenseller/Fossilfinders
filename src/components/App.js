@@ -51,7 +51,7 @@ function App() {
 			<div className="game-con">
 				<h1>Turn: {turn}</h1>
 				<h3>
-					P1: {score.P1}, P2: {score.P2}
+					Score: P1: {score.P1}, P2: {score.P2}
 				</h3>
 				{!playing && <PlayBtn setPlaying={setPlaying} />}
 				{playing && (
@@ -63,6 +63,8 @@ function App() {
 						setTwoGrid={setTwoGrid}
 						setOneGrid={setOneGrid}
 						setPlaying={setPlaying}
+						score={score}
+						setScore={setScore}
 					/>
 				)}
 			</div>

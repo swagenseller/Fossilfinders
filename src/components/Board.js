@@ -55,6 +55,11 @@ export default function Board(props) {
 		props.setTwoGrid(newArr);
 		props.setTurn(props.turn === "P1" ? "P2" : "P1");
 		props.setPlaying(false);
+		if (item.fossil) {
+			let newScore = { ...props.score };
+			newScore[props.turn]++;
+			props.setScore(newScore);
+		}
 	};
 
 	const displayGrid = (grid, enemy) => {
