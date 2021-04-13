@@ -1,5 +1,6 @@
 import Board from "./Board";
 import PlayBtn from "./PlayBtn";
+import ScoreBoard from "./ScoreBoard";
 import createFossils from "./randBoard";
 import "../css/app.css";
 import { useEffect, useState } from "react";
@@ -50,9 +51,7 @@ function App() {
 		<div className="App">
 			<div className="game-con">
 				<h1>Turn: {turn}</h1>
-				<h3>
-					Score: P1: {score.P1}, P2: {score.P2}
-				</h3>
+				<ScoreBoard score={score} />
 				{!playing && <PlayBtn setPlaying={setPlaying} />}
 				{playing && (
 					<Board
