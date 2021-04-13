@@ -39,7 +39,8 @@ createFossils(p2Board, 8);
 function App() {
 	const [twoGrid, setTwoGrid] = useState(p2Board);
 	const [oneGrid, setOneGrid] = useState(p1Board);
-	const [turn, setTurn] = useState("red");
+	const [turn, setTurn] = useState("P1");
+	const [score, setScore] = useState({ P1: 0, P2: 0 });
 	const [playing, setPlaying] = useState(false);
 	useEffect(() => {
 		console.log("the state of turn has changed");
@@ -49,6 +50,9 @@ function App() {
 		<div className="App">
 			<div className="game-con">
 				<h1>Turn: {turn}</h1>
+				<h3>
+					P1: {score.P1}, P2: {score.P2}
+				</h3>
 				{!playing && <PlayBtn setPlaying={setPlaying} />}
 				{playing && (
 					<Board

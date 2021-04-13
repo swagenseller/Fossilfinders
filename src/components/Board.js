@@ -53,7 +53,7 @@ export default function Board(props) {
 		//const newPlayer = deepCopy(props.player);
 		props.setOneGrid(props.player);
 		props.setTwoGrid(newArr);
-		props.setTurn(props.turn === "red" ? "blue" : "red");
+		props.setTurn(props.turn === "P1" ? "P2" : "P1");
 		props.setPlaying(false);
 	};
 
