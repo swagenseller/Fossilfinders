@@ -5,6 +5,24 @@ import createFossils from "./randBoard";
 import "../css/app.css";
 import { useEffect, useState } from "react";
 
+const newBoard = () => {
+	const board = [];
+	for (let i = 0; i < 8; i++) {
+		board.push([]);
+		for (let j = 0; j < 8; j++) {
+			board[i].push({
+				id: "" + i + j,
+				visible: false,
+				fossil: false,
+				row: i,
+				col: j,
+			});
+		}
+	}
+	createFossils(board, 8);
+	return board;
+};
+
 const p1Board = [];
 for (let i = 0; i < 8; i++) {
 	p1Board.push([]);
@@ -47,12 +65,22 @@ function App() {
 		console.log("the state of turn has changed");
 	}, [turn]);
 
+	const newGame = () => {
+		setTurn("P1");
+		setPlaying(false);
+		setScore({ P1: 0, P2: 0 });
+		setOneGrid(newBoard());
+		setTwoGrid(newBoard());
+	};
+
 	return (
 		<div className="App">
 			<div className="game-con">
 				<h1>Turn: {turn}</h1>
 				<ScoreBoard score={score} />
-				{!playing && <PlayBtn setPlaying={setPlaying} />}
+				{!playing && (
+					<PlayBtn setPlaying={setPlaying} score={score} newGame={newGame} />
+				)}
 				{playing && (
 					<Board
 						turn={turn}
