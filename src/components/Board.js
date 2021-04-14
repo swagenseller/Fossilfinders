@@ -72,7 +72,9 @@ export default function Board(props) {
 								<td
 									key={subItems.id}
 									className={styleTile(subItems)}
-									onClick={() => handleClick(subItems)}
+									onClick={() => {
+										if (!subItems.visible) handleClick(subItems);
+									}}
 								></td>
 							);
 						} else {
