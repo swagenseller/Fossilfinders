@@ -2,3 +2,10 @@
 	width: 500px;
 	margin: 0 auto;
 }
+body {
+	margin: 0;
+}
+
+.App {
+	background: #aeadab;
+}
