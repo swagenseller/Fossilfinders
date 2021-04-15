@@ -1,3 +1,22 @@
+# FossilFinders
+
+This a 2-player strategy game where players take turns trying to locate their opponents fossils on a 8 by 8 grid.
+
+Currently, its designed for Pass and Play where players pass the device between them.
+
+# Features I want to work on next:
+
+- Implementing online 2 player
+- updating UI
+- possibly hosting
+- making changes CSS
+
+Ideas for updating UI:
+
+- adding new text bar stating last player's move
+- a legend for each grid/board
+- displaying how many remaining fossils are left
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
