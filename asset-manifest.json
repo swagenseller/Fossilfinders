@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Fossilfinders/static/css/main.63935e28.chunk.css",
+    "main.js": "/Fossilfinders/static/js/main.b3dba638.chunk.js",
+    "main.js.map": "/Fossilfinders/static/js/main.b3dba638.chunk.js.map",
+    "runtime-main.js": "/Fossilfinders/static/js/runtime-main.d3b4a84f.js",
+    "runtime-main.js.map": "/Fossilfinders/static/js/runtime-main.d3b4a84f.js.map",
+    "static/js/2.58c9083b.chunk.js": "/Fossilfinders/static/js/2.58c9083b.chunk.js",
+    "static/js/2.58c9083b.chunk.js.map": "/Fossilfinders/static/js/2.58c9083b.chunk.js.map",
+    "static/js/3.1ecda190.chunk.js": "/Fossilfinders/static/js/3.1ecda190.chunk.js",
+    "static/js/3.1ecda190.chunk.js.map": "/Fossilfinders/static/js/3.1ecda190.chunk.js.map",
+    "index.html": "/Fossilfinders/index.html",
+    "static/css/main.63935e28.chunk.css.map": "/Fossilfinders/static/css/main.63935e28.chunk.css.map",
+    "static/js/2.58c9083b.chunk.js.LICENSE.txt": "/Fossilfinders/static/js/2.58c9083b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3b4a84f.js",
+    "static/js/2.58c9083b.chunk.js",
+    "static/css/main.63935e28.chunk.css",
+    "static/js/main.b3dba638.chunk.js"
+  ]
+}
